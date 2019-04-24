@@ -1,8 +1,9 @@
 package com.simplaex.rivr.challenge;
 
-import com.simplaex.rivr.challenge.model.Event;
+import com.simplaex.rivr.challenge.files.FileReader;
+import com.simplaex.rivr.challenge.files.FileReaderFactory;
 import com.simplaex.rivr.challenge.model.UserProfile;
-import com.simplaex.rivr.challenge.servcie.FileReader;
+import com.simplaex.rivr.challenge.util.FileExtension;
 
 import java.io.IOException;
 import java.util.Map;
@@ -12,15 +13,15 @@ public class Application {
 
     public static void main(String[] args) throws IOException {
 
-        Map<UUID, UserProfile> profiles = FileReader.readProfiles(args[0]);
+        // Check the file extension, csv or log
 
-        FileReader.readEvents(args[1])
-                .forEach(event -> addEvent(profiles, event));
+        FileExtension extension = FileExtension.fromExtension(args[0]);
 
-        FileReader.saveProfiles(args[2], profiles.values());
+        FileReader reader = FileReaderFactory.fromFileExtension(extension);
+
+        Map<UUID, UserProfile> profiles = reader.read(args);
+
+        reader.saveProfiles(args, profiles.values());
     }
 
-    private static void addEvent(Map<UUID, UserProfile> profiles, Event event) {
-        profiles.getOrDefault(event.getUserId(), new UserProfile(event.getUserId(), event.getTime())).add(event);
-    }
 }
