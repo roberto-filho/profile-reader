@@ -1,6 +1,5 @@
-package com.simplaex.rivr.challenge.servcie;
+package com.simplaex.rivr.challenge.servcie.files;
 
-import com.simplaex.rivr.challenge.files.ProfileSaver;
 import com.simplaex.rivr.challenge.model.Event;
 import com.simplaex.rivr.challenge.model.UserProfile;
 import org.junit.jupiter.api.Test;
@@ -35,7 +34,7 @@ class CsvFileReaderTest {
         final Instant today = Instant.parse("2019-04-23T00:02:23.803365Z");
         final Path tempFile = tempDir.resolve("test.csv");
 
-        final Map<UUID, UserProfile> profiles = readProfilesFromFile("profiles/user_profiles_20190220.csv");
+        final Map<UUID, UserProfile> profiles = readProfiles("profiles/user_profiles_20190220.csv");
 
         ProfileSaver.saveProfiles(tempFile.toString(), profiles.values(), today);
 
@@ -49,7 +48,7 @@ class CsvFileReaderTest {
         final Instant today = Instant.parse("2019-04-23T20:02:23.803365Z");
         final Path tempFile = tempDir.resolve("test.csv");
 
-        final Map<UUID, UserProfile> profiles = readProfilesFromFile("profiles/user_profiles_20190422.csv");
+        final Map<UUID, UserProfile> profiles = readProfiles("profiles/user_profiles_20190422.csv");
 
         ProfileSaver.saveProfiles(tempFile.toString(), profiles.values(), today);
 
@@ -58,8 +57,8 @@ class CsvFileReaderTest {
         assertThat(savedProfiles).hasSize(0);
     }
 
-    private Map<UUID, UserProfile> readProfilesFromFile(String fileName) throws IOException {
-        URL resource = CsvFileReaderTest.class.getClassLoader().getResource(fileName);
+    private Map<UUID, UserProfile> readProfiles(String fileName) throws IOException {
+        URL resource = getClass().getClassLoader().getResource(fileName);
         return reader.readProfiles(resource.getPath());
     }
 }

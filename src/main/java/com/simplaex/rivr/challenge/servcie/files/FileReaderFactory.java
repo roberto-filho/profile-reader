@@ -1,6 +1,5 @@
-package com.simplaex.rivr.challenge.files;
+package com.simplaex.rivr.challenge.servcie.files;
 
-import com.simplaex.rivr.challenge.servcie.CsvFileReader;
 import com.simplaex.rivr.challenge.util.FileExtension;
 
 public class FileReaderFactory {

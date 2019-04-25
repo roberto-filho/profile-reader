@@ -1,7 +1,5 @@
-package com.simplaex.rivr.challenge.servcie;
+package com.simplaex.rivr.challenge.servcie.files;
 
-import com.simplaex.rivr.challenge.files.FileReader;
-import com.simplaex.rivr.challenge.files.ProfileSaver;
 import com.simplaex.rivr.challenge.model.Event;
 import com.simplaex.rivr.challenge.model.EventType;
 import com.simplaex.rivr.challenge.model.UserProfile;

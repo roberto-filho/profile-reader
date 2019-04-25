@@ -18,6 +18,10 @@ public class UserProfile {
     private long clicks = 0;
     private long conversions = 0;
 
+    public UserProfile(UUID id) {
+        this.id = id;
+    }
+
     public UserProfile(UUID id, Instant lastActive) {
         this.id = id;
         this.lastActive = lastActive;
@@ -55,6 +59,9 @@ public class UserProfile {
     }
 
     private Instant max(Instant instant1, Instant instant2) {
+        if (instant1 == null) {
+            return instant2;
+        }
         return instant1.isAfter(instant2) ? instant1 : instant2;
     }
 }

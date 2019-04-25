@@ -1,4 +1,4 @@
-package com.simplaex.rivr.challenge.files;
+package com.simplaex.rivr.challenge.servcie.files;
 
 import com.simplaex.rivr.challenge.model.UserProfile;
 

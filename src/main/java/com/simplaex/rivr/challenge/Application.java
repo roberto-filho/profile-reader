@@ -1,7 +1,7 @@
 package com.simplaex.rivr.challenge;
 
-import com.simplaex.rivr.challenge.files.FileReader;
-import com.simplaex.rivr.challenge.files.FileReaderFactory;
+import com.simplaex.rivr.challenge.servcie.files.FileReader;
+import com.simplaex.rivr.challenge.servcie.files.FileReaderFactory;
 import com.simplaex.rivr.challenge.model.UserProfile;
 import com.simplaex.rivr.challenge.util.FileExtension;
 
